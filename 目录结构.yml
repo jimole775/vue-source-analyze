@@ -1,0 +1,58 @@
+- .circleci:
+  circleci就是一个自动化部署工具，它和jenkens有什么区别，大家自己去研究了，我这里就不展开讲了。
+  自动化部署的配置项，主要就是当有新版本更新时，自动化把资源部署到npm服务器，大家npm install的时候，拉取的就是最新的版本内容
+
+- .github:
+  github的说明文档
+
+- benchmarks:
+  主要是开发团队在开发vue时，做性能分析用的，他们会写一些比较极限的样例，用来做记录分析
+  我们平时做的工程，一般情况下不用太关心这个东西，除非你的项目要做极限优化，那么可以看看他们都有哪些极限测试
+
++ build:
+  打包配置，主要就是构建的入口和出口的配置
+
+- dist:
+  这个不用多说，就是打包资源的存放位置
+
+- examples:
+  用vue实现的样例，里面的样例都比较花里胡哨，大家有兴趣可以看一下
+  我觉得比较适用的就是markdown，其他的实用性一般，可能我接触的项目，业务类型都相对较简单
+  所以觉得这里的样例比较没感觉
+
++ flow: 定义全局的类型和接口, 需要结合 flow-bin 插件使用，用于检测有没有按照定义的类型执行代码规范
+
++ packages: 平台的打包逻辑，主要是配置兼容一些平台的接口, 我们主要留下一个 vue-template-compiler 就行了
+  |+ vue-template-compiler: 
+
++ src: (核心)
+  |+ compiler:
+      编译目录，比如说，平常我们使用的.vue的文件类型，都是需要通过这个目录下代码进行转译的
+
+  |+ core: 核心库
+      |+ components: 通用组件，只有一个 keep-alive
+      |+ global-api: 全局的静态方法和属性
+      |+ instance: 包含 Vue 构建函数设计相关的代码
+      |+ observer: 相应系统，包含数据观测的核心代码
+      |+ util: 辅助函数
+      |+ vdom: 包含 虚拟DOM 创建(creation) 和 打补丁(patching) 的代码
+
+  |+ platforms: 平台兼容，平台支持
+      |+ web: 浏览器相关
+        |- server: web端的服务器渲染
+        |+ util: 公共工具
+      |- weex:
+
+  |- server: 服务端渲染的主要逻辑
+
+  |+ sfc: 主要用于把 .vue 解析为 .js 文件
+      |- parser.js: 
+
+  |+ shared: 常量
+
+- test:
+  单元测试用的一堆脚本
+
+- types:
+  typescript的类型，一般用typescript开发都需要预配置一堆的全局类型
+  如果有人需要配合typescript来开发，这个模块下的内容就是涉及全局类型的

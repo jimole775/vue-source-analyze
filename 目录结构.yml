@@ -20,9 +20,9 @@
   我觉得比较适用的就是markdown，其他的实用性一般，可能我接触的项目，业务类型都相对较简单
   所以觉得这里的样例比较没感觉
 
-+ flow: 定义全局的类型和接口, 需要结合 flow-bin 插件使用，用于检测有没有按照定义的类型执行代码规范
++ flow: 定义全局的类型和接口，需要结合 flow-bin 插件使用，用于检测有没有按照定义的类型执行代码规范
 
-+ packages: 平台的打包逻辑，主要是配置兼容一些平台的接口, 我们主要留下一个 vue-template-compiler 就行了
++ packages: 平台的打包逻辑，主要是配置兼容一些平台的接口，我们主要留下一个 vue-template-compiler 就行了
   |+ vue-template-compiler: 
 
 + src: (核心)

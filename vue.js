@@ -2079,7 +2079,9 @@
         typeof Proxy !== 'undefined' && isNative(Proxy);
 
       if (hasProxy) {
+        // 内置关键字的预警
         var isBuiltInModifier = makeMap('stop,prevent,self,ctrl,shift,alt,meta,exact');
+        debugger
         config.keyCodes = new Proxy(config.keyCodes, {
           set: function set (target, key, value) {
             if (isBuiltInModifier(key)) {
@@ -2096,6 +2098,7 @@
       var hasHandler = {
         has: function has (target, key) {
           var has = key in target;
+          debugger
           var isAllowed = allowedGlobals(key) ||
             (typeof key === 'string' && key.charAt(0) === '_' && !(key in target.$data));
           if (!has && !isAllowed) {
@@ -2108,6 +2111,7 @@
 
       var getHandler = {
         get: function get (target, key) {
+          debugger
           if (typeof key === 'string' && !(key in target)) {
             if (key in target.$data) { warnReservedPrefix(target, key); }
             else { warnNonPresent(target, key); }
@@ -4992,6 +4996,8 @@
           // internal component options needs special treatment.
           initInternalComponent(vm, options);
         } else {
+          console.log('equal?:', vm.constructor === Vue)
+          console.log('equal:', vm.constructor.options, Vue.options)
           vm.$options = mergeOptions(
             resolveConstructorOptions(vm.constructor),
             options || {},
@@ -5088,6 +5094,7 @@
       ) {
         warn('Vue is a constructor and should be called with the `new` keyword');
       }
+      console.log('options:', Vue.options)
       this._init(options);
     }
 

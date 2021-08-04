@@ -4,7 +4,7 @@
 
 3. 如果类型显示 `Type annotations can only be used in TypeScript files`，这是由于新版本的vscode 原生支持 typescript 导致的，可以在 `Settings` 中搜索 `typescript: validate` 关掉它。
 
-4. 然后在左下角就可以看到它的一个校验的通过度。
+4. 每个js文件的头部如果写了 `/* @flow */`，就会触发flow检测，然后在左下角就可以看到它的一个校验的通过度。
 
 5. 我们先看一看取消一个类型定义会怎么样，结果就是通过度降低了。
 

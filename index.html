@@ -1,6 +1,7 @@
 <body>
 <!-- <script src="./node_modules/requirejs/require.js"></script> -->
-<div id="app"></div>
+  <div id="app">
+  </div>
 <script src="vue.js"></script>
 <script>
   // require.config({
@@ -11,13 +12,27 @@
   // require(['vue'], function(vue) {
   //   console.log('dasdadas', vue)
   // })
+  Vue.component('app', {
+    name: 'app',
+    data () { return {} },
+    render (h) {
+      return h('a', {
+        domProps: {
+          innerHTML: '测试'
+        },
+        on: {
+          click () { alert('hello') }
+        }
+      })
+    }
+  })
   const vue = new Vue({
     el: '#app',
     name: 'test',
-    decodeURIComponent: 2,
-    data: {
-    },
-    render (h) { console.log('asd', this.decodeURIComponent);return h('div', 'dsadasd') }
-  }).$mount()
+    data: {},
+    render (h) {
+      return h('app', {}, [])
+    }
+  })
 </script>
 </body>

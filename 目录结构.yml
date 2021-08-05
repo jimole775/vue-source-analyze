@@ -27,14 +27,19 @@
 
 + src: (核心)
   |+ compiler:
-      编译目录，比如说，平常我们使用的.vue的文件类型，都是需要通过这个目录下代码进行转译的
+      编译目录，比如说，平常我们使用的 .vue 的文件类型，都是需要通过这个目录下代码进行转译的
 
   |+ core: 核心库
       |+ components: 通用组件，只有一个 keep-alive
+
       |+ global-api: 全局的静态方法和属性
-      |+ instance: 包含 Vue 构建函数设计相关的代码
+
+      |+ instance: vue实例的构建流程，new Vue() 的主入口
+
       |+ observer: 相应系统，包含数据观测的核心代码
-      |+ util: 辅助函数
+
+      |+ util: 辅助函数，没有流程逻辑，都是给其他流程模块使用
+
       |+ vdom: 包含 虚拟DOM 创建(creation) 和 打补丁(patching) 的代码
 
   |+ platforms: 平台兼容，平台支持

@@ -1,5 +1,5 @@
 <body>
-<!-- <script src="./node_modules/requirejs/require.js"></script> -->
+  <!-- <script src="./node_modules/requirejs/require.js"></script> -->
   <div id="app">
   </div>
 <script src="vue.js"></script>
@@ -12,26 +12,30 @@
   // require(['vue'], function(vue) {
   //   console.log('dasdadas', vue)
   // })
-  Vue.component('app', {
-    name: 'app',
-    data () { return {} },
+  var child = {
+    name: 'child',
+    template: '<div>child</div>'    
+  }
+  Vue.component('box', {
+    name: 'box',
+    components: { child },
+    props: { text: { type: String }},
     render (h) {
-      return h('a', {
-        domProps: {
-          innerHTML: '测试'
-        },
+      return h('div', {
         on: {
           click () { alert('hello') }
         }
-      })
+      }, [h('span', this.text), h('child')])
     }
   })
   const vue = new Vue({
     el: '#app',
-    name: 'test',
-    data: {},
+    name: 'app',
+    data: { text: 'top' },
     render (h) {
-      return h('app', {}, [])
+      return h('box', {
+        props: { text: this.text }
+      })
     }
   })
 </script>

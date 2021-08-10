@@ -4096,6 +4096,7 @@ function createComponent (
 
   // return a placeholder vnode
   var name = Ctor.options.name || tag;
+  debugger
   var vnode = new VNode(
     ("vue-component-" + (Ctor.cid) + (name ? ("-" + name) : '')),
     data, undefined, undefined, undefined, context,
@@ -4417,6 +4418,7 @@ function initMixin (Vue) {
       // optimize internal component instantiation
       // since dynamic options merging is pretty slow, and none of the
       // internal component options needs special treatment.
+      // 把 options 赋值到 vm.$options
       initInternalComponent(vm, options);
     } else {
       console.log('equal?:', vm.constructor === Vue);
@@ -4478,6 +4480,7 @@ function resolveConstructorOptions (Ctor) {
   // 既然Ctor就是Vue，那它怎么会有一个options属性
   // 可以从参数项找到答案 Ctor: Class<Component> => /flow/component.js:5
   var options = Ctor.options;
+  debugger
   if (Ctor.super) {
     // 一直追溯到最顶层的构造器
     var superOptions = resolveConstructorOptions(Ctor.super);

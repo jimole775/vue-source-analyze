@@ -14,27 +14,29 @@
   // })
   var child = {
     name: 'child',
-    template: '<div>child</div>'    
+    inject: [ 't' ],
+    template: '<div>{{ \'child\' + t }}</div>'    
   }
   Vue.component('box', {
     name: 'box',
     components: { child },
-    props: { text: { type: String }},
+    inject: [ 't' ],
     render (h) {
       return h('div', {
         on: {
           click () { alert('hello') }
         }
-      }, [h('span', this.text), h('child')])
+      }, [h('span', this.t), h('child')])
     }
   })
   const vue = new Vue({
     el: '#app',
     name: 'app',
     data: { text: 'top' },
+    provide () { return { t: this.text || 'topbak' } },
     render (h) {
       return h('box', {
-        props: { text: this.text }
+        // props: { text: this.text }
       })
     }
   })

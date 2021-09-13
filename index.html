@@ -33,6 +33,9 @@
     el: '#app',
     name: 'app',
     data: { text: 'top' },
+    watch () {
+      console.log(this)
+    },
     provide () { return { t: this.text || 'topbak' } },
     render (h) {
       return h('box', {

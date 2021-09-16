@@ -1,37 +1,29 @@
 <body>
   <div id="app">
   </div>
-<script src="vue.js"></script>
+<script src="../vue.js"></script>
 <script>
-  var child = {
-    name: 'child',
-    inject: [ 't' ],
-    template: '<div>{{ \'child\' + t }}</div>'    
-  }
-  Vue.component('box', {
-    name: 'box',
-    components: { child },
-    inject: [ 't' ],
-    render (h) {
-      return h('div', {
-        on: {
-          click () { alert('hello') }
-        }
-      }, [h('span', this.t), h('child')])
-    }
-  })
   const vue = new Vue({
     el: '#app',
     name: 'app',
-    data: { text: 'top' },
-    watch () {
-      console.log(this)
+    data: {
+      top: {
+        mid: {
+          bottom: 1
+        },
+      },
+      floant: 2
     },
-    provide () { return { t: this.text || 'topbak' } },
-    render (h) {
-      return h('box', {
-        // props: { text: this.text }
-      })
+    template: `
+      <div>
+        <div>{{ floant }}</div>
+        <button @click="update">+</button>
+      </div>
+    `,
+    methods: {
+      update () {
+        this.floant ++
+      }
     }
   })
 </script>

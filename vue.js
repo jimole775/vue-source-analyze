@@ -1095,6 +1095,7 @@ function defineReactive (
     configurable: true,
     get: function reactiveGetter () {
       var value = getter ? getter.call(obj) : val;
+      debugger
       if (Dep.target) {
         dep.depend();
         if (childOb) {
@@ -1849,7 +1850,6 @@ var initProxy;
 
   var hasHandler = {
     has: function has (target, key) {
-      debugger
       var has = key in target;
       var isAllowed = allowedGlobals(key) || key.charAt(0) === '_';
       if (!has && !isAllowed) {
@@ -1861,7 +1861,6 @@ var initProxy;
 
   var getHandler = {
     get: function get (target, key) {
-      debugger
       if (typeof key === 'string' && !(key in target)) {
         warnNonPresent(target, key);
       }

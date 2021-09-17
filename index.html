@@ -2,7 +2,7 @@
   <!-- <script src="./node_modules/requirejs/require.js"></script> -->
   <div id="app">
   </div>
-<script src="vue.js"></script>
+<script src="vue.runtime.js"></script>
 <script>
   // require.config({
   //   paths: {
@@ -17,6 +17,7 @@
     inject: [ 't' ],
     template: '<div>{{ \'child\' + t }}</div>'    
   }
+  debugger
   Vue.component('box', {
     name: 'box',
     components: { child },

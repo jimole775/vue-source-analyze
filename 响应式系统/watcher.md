@@ -1,0 +1,2 @@
+所有涉及到数据和视图刷新的都和watcher有关
+比如：watch属性，computed属性，data属性，props属性

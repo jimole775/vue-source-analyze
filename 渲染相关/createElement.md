@@ -1,11 +1,11 @@
 ## 接口
-``` js
+``` java
 // vm接口
 $createElement (
   tag?: string | Component,
   data?: Object,
   children?: VNodeChildren
-) => VNode;
+) => VNode
 
 // 柯里化逻辑
 createElement (

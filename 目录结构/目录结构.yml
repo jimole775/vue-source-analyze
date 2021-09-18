@@ -35,7 +35,7 @@
       |+ instance: vue实例的构建流程，new Vue() 的主入口
 
       |+ observer: 数据响应系统，包含数据观测的核心代码
-          |+ index: 
+          |+ index: 入口
           |+ dep: 更新时的依赖管理
           |+ scheduler: 依赖的处理逻辑
           |+ watcher: 监听器实体

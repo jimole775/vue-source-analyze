@@ -1095,7 +1095,6 @@ function defineReactive (
     configurable: true,
     get: function reactiveGetter () {
       var value = getter ? getter.call(obj) : val;
-      debugger
       if (Dep.target) {
         dep.depend();
         if (childOb) {
@@ -2955,6 +2954,7 @@ var Watcher = function Watcher (
   options
 ) {
   this.vm = vm;
+  debugger
   vm._watchers.push(this);
   // options
   if (options) {
@@ -3063,6 +3063,7 @@ Watcher.prototype.cleanupDeps = function cleanupDeps () {
  * Will be called when a dependency changes.
  */
 Watcher.prototype.update = function update () {
+  debugger
   /* istanbul ignore else */
   if (this.lazy) {
     this.dirty = true;
@@ -3205,6 +3206,7 @@ function initState (vm) {
   if (opts.props) { initProps(vm, opts.props); }
   if (opts.methods) { initMethods(vm, opts.methods); }
   if (opts.data) {
+    debugger
     initData(vm);
   } else {
     observe(vm._data = {}, true /* asRootData */);
@@ -3300,6 +3302,7 @@ function initData (vm) {
     }
   }
   // observe data
+  debugger
   observe(data, true /* asRootData */);
 }
 
@@ -4095,7 +4098,6 @@ function createComponent (
 
   // return a placeholder vnode
   var name = Ctor.options.name || tag;
-  debugger
   var vnode = new VNode(
     ("vue-component-" + (Ctor.cid) + (name ? ("-" + name) : '')),
     data, undefined, undefined, undefined, context,
@@ -4231,9 +4233,11 @@ function _createElement (
     data.scopedSlots = { default: children[0] };
     children.length = 0;
   }
+
   if (normalizationType === ALWAYS_NORMALIZE) {
     children = normalizeChildren(children);
   } else if (normalizationType === SIMPLE_NORMALIZE) {
+    // simpleNormalizeChildren 未能解析清楚
     children = simpleNormalizeChildren(children);
   }
   var vnode, ns;
@@ -4476,10 +4480,7 @@ function initInternalComponent (vm, options) {
 }
 
 function resolveConstructorOptions (Ctor) {
-  // 既然Ctor就是Vue，那它怎么会有一个options属性
-  // 可以从参数项找到答案 Ctor: Class<Component> => /flow/component.js:5
   var options = Ctor.options;
-  debugger
   if (Ctor.super) {
     // 一直追溯到最顶层的构造器
     var superOptions = resolveConstructorOptions(Ctor.super);
@@ -4546,7 +4547,6 @@ function Vue$3 (options) {
   ) {
     warn('Vue is a constructor and should be called with the `new` keyword');
   }
-  debugger
   this._init(options);
 }
 
@@ -7786,7 +7786,6 @@ var show = {
   update: function update (el, ref, vnode) {
     var value = ref.value;
     var oldValue = ref.oldValue;
-
     /* istanbul ignore if */
     if (value === oldValue) { return }
     vnode = locateNode(vnode);

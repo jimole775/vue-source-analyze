@@ -14,6 +14,14 @@
       },
       floant: 2
     },
+    watch: {
+      'floant': {
+        handler (a) {
+          console.log(a)
+        },
+        immediate: true
+      }
+    },
     template: `
       <div>
         <div>{{ floant }}</div>

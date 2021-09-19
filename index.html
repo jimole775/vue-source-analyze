@@ -2,7 +2,7 @@
   <!-- <script src="./node_modules/requirejs/require.js"></script> -->
   <div id="app">
   </div>
-<script src="vue.js"></script>
+<script src="vue.runtime.js"></script>
 <script>
   // require.config({
   //   paths: {
@@ -15,17 +15,21 @@
   var child = {
     functional: true,
     name: 'child',
-    render (h) {
-      return h('span', 'child123', [h('span', '456', [h('i', '0')])])
-    }
+    template: `<div>12312323</div>`
+    // render (h) {
+    //   return h('span', 'child123', [h('span', '456', [h('i', '0')])])
+    // }
   }
   Vue.component('box', {
     name: 'box',
     components: { child },
-    inject: [ 't' ],
+    // inject: [ 't' ],
     watch: {
-      t (val) {
-        console.log('t:', val)
+      t: {
+        handler (val) {
+          console.log('t:', val)
+        },
+        deep: true
       }
     },
     render (h) {
@@ -40,11 +44,12 @@
     el: '#app',
     name: 'app',
     data: { text: { mid: '1'} },
-    provide () { return { t: this.text || 'topbak' } },
-    render (h) {
-      return h('box', this.text.mid)
-      // return h('div', this.text.mid)
-    }
+    template: '<div>13232323</div>'
+    // provide () { return { t: this.text || 'topbak' } },
+    // render (h) {
+    //   return h('div', 111)
+    //   // return h('div', this.text.mid)
+    // }
   })
 </script>
 </body>

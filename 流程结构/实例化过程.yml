@@ -1,9 +1,10 @@
-- mergeOptions():     // 合并所有子项的参数
-- initLifecycle(vm):  // 初始化基础属性
-- initEvents(vm):     // 绑定 dom 事件
-- initRender(vm):     // 绑定 $createElement 方法
-- callHook(vm, 'beforeCreate'): // 调用钩子
-- initInjections(vm): // 初始化 inject 属性，从父级组件 provide 中拿
-- initState(vm):      // 初始化响应式属性，包括 data,props,methods,watch,computed
-- initProvide(vm):    // 初始化当前组件的 provide
-- callHook(vm, 'created'): 
+new Vue()
+  - mergeOptions():     // 合并所有子项的参数
+  - initLifecycle(vm):  // 初始化基础属性
+  - initEvents(vm):     // 绑定 dom 事件
+  - initRender(vm):     // 绑定 $createElement 方法
+  - callHook(vm, 'beforeCreate'): // 调用钩子
+  - initInjections(vm): // 初始化 inject 属性，从父级组件 provide 中拿
+  - initState(vm):      // 初始化响应式属性，包括 data,props,methods,watch,computed
+  - initProvide(vm):    // 初始化当前组件的 provide
+  - callHook(vm, 'created'): // 调用钩子
